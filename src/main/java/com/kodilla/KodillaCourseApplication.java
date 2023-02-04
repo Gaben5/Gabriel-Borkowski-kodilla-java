@@ -5,6 +5,9 @@ import com.kodilla.records.BookRecord;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class KodillaCourseApplication {
 
@@ -19,6 +22,10 @@ public class KodillaCourseApplication {
 		Calk calk = new Calk();
 
 		System.out.println("Transformed string: "+calk.TransformStrToInt("2"));
+
+		calk.addToListModulo(0,100,5);
+
+		List<Integer> modulo = new ArrayList<>();
 
 	}
 
