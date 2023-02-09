@@ -6,6 +6,7 @@ import java.util.List;
 
 public class SearchingForVowels {
     private String str;
+    private String vowels2="aeyuoAEYUO";
     private String vowels="";
 
 
@@ -17,15 +18,22 @@ public class SearchingForVowels {
         return str;
     }
 
-    public String searchForVowels() {
-        for (int i = 0; i < str.length(); i++) { //próbowałem to zrobić z ArrayList ale nie mogłem sobie poradzić, na spotkaniu możemy to jeszcze obgadać
-            if (str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'u' || str.charAt(i) == 'y' || str.charAt(i) == 'o' ) {
-                vowels += str.charAt(i);
+    public String searchForVowels2(String vol){
+        vowels="";
+        for(int i=0; i<vol.length(); i++){
+            for(int y=0;y<vowels2.length();y++){
+                if (vol.charAt(i)==vowels2.charAt(y)){
+                    vowels+=vowels2.charAt(y);
+                }
             }
-            }
-            System.out.println(vowels);
-            return vowels;
+        }
+        return vowels;
     }
+
+    public String getVowels() {
+        return vowels;
+    }
+
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
