@@ -22,13 +22,11 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorEmptyList(){
         //Given
         List<Integer> list1 = new ArrayList<>();
-
-        OddNumbersExterminator ex1 = new OddNumbersExterminator(list1);
+        OddNumbersExterminator ex1 = new OddNumbersExterminator();
         //When
-        List<Integer> result = ex1.getOddNumbers();
-        System.out.println("Checking list(empty) ex1: " +ex1.getOddNumbers());
+        System.out.println("Checking list(empty) ex1: " +ex1);
         //Then
-        Assertions.assertEquals(ex1.getOddNumbers(),result);
+        Assertions.assertEquals(ex1.exterminate(list1),list1);
     }
 
     @DisplayName("test Odd Numbers Exterminator Normal List")
@@ -41,17 +39,12 @@ public class CollectionTestSuite {
                 list2.add(i);
             }
         }
-        OddNumbersExterminator ex2 = new OddNumbersExterminator(list2);
+        OddNumbersExterminator ex2 = new OddNumbersExterminator();
         //When
-        List<Integer> result = Arrays.asList(0,2,4,6,8);
-        /*result.add(0);
-        result.add(2);
-        result.add(4);  Poprzednio było z ArrayList dodawane i działało
-        result.add(6);  To z zadania dodatkowego
-        result.add(8);*/
-        System.out.println("Checking normal list: "+ex2.getOddNumbers());
-        System.out.println("Checking result: "+result);
+        List<Integer> list1 = Arrays.asList(0,2,4,6,8);
+        System.out.println("Checking normal list: "+ex2.exterminate(list1));
+        System.out.println("Checking result: "+list2);
         //Then
-        Assertions.assertEquals(result,ex2.getOddNumbers());
+        Assertions.assertEquals(list2,ex2.exterminate(list1));
     }
 }
