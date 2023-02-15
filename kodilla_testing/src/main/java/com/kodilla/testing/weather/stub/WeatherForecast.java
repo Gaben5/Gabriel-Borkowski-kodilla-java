@@ -19,39 +19,21 @@ public class WeatherForecast {
         return resultMap;
     }
     public Double AvgTemperature(){
-        Map<String,Double> forecastData = new HashMap<>();
-        List<Double> avgNumbers = new ArrayList<>();
+        Collection<Double> collection = temperatures.getTemperatures().values();
         double avg = 0;
-
-        for (Map.Entry<String,Double> retrievedTemperatures: temperatures.getTemperatures().entrySet()){
-
-            forecastData.put(retrievedTemperatures.getKey(),retrievedTemperatures.getValue());
-            avgNumbers.add(retrievedTemperatures.getValue());
-
-
+        for (Double avarage: collection){
+            avg+=avarage;
         }
-
-        for (int i = 0 ; i<avgNumbers.size() ; i++){
-            avg += avgNumbers.get(i);
-        }
-        avg = avg/avgNumbers.size();
-
+        avg = avg/collection.size();
         return avg;
     }
 
 
 
     public Double MedianTemperature(){
-        Map<String,Double> forecastData = new HashMap<>();
-        List<Double> medianNumbers = new LinkedList<>();
-
-        double median;
-
-        for(Map.Entry<String,Double> retrievedTemperatures: temperatures.getTemperatures().entrySet()){
-
-            forecastData.put(retrievedTemperatures.getKey(), retrievedTemperatures.getValue());
-            medianNumbers.add(retrievedTemperatures.getValue());
-        }
+        double median = 0.0;
+        List<Double> medianNumbers = new ArrayList<>();
+        medianNumbers.addAll(temperatures.getTemperatures().values());
         Collections.sort(medianNumbers);
         if (medianNumbers.size() % 2 == 0){
             double sumOfMiddleEllements = (double) (medianNumbers.get((int) ((medianNumbers.size()/2)-0.5))) + medianNumbers.get((int) ((medianNumbers.size()/2)+0.5)) ;
