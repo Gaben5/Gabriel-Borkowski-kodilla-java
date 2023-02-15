@@ -7,26 +7,26 @@ public class ShapeCollector {
     private List<Shape> shapeList = new LinkedList<>();
 
     public void addFigure(Shape shape){
-    //    shapeList.add(shape);
+        shapeList.add(shape);
     }
 
     public void removeFigure(Shape shape){
-    //    shapeList.remove(shape);
+        shapeList.remove(shape);
     }
 
     public Shape getFigure(int n){
-        return null;
+        return shapeList.get(n);
     }
 
-    public String showFigures(){
-//        String figuresName = "";
-//        for (int i=0 ; i<shapeList.size(); i++){
-//            figuresName += shapeList.get(i).getShapeName();
-//        }
-        return null;
+    public List<Shape> showFigures(){
+       /* String figuresName = "";
+        for (int i=0 ; i<shapeList.size(); i++){
+            figuresName += shapeList.get(i).getShapeName();
+        }*/
+        return shapeList;
     }
 
     public List<Shape> getShapeList() {
-        return null;
+        return shapeList;
     }
 }

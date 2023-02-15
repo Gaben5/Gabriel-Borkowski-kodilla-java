@@ -40,7 +40,7 @@ public class ShapeCollectorTestSuite {
             sc.addFigure(tr1);
             list.add(sq1);
             //When
-            sc.removeFigure(sc.getFigure(1));
+            sc.removeFigure(tr1);
             //Then
             Assertions.assertEquals(sc.getShapeList(), list);
         }
@@ -49,16 +49,36 @@ public class ShapeCollectorTestSuite {
     @DisplayName("Test to show figures")
     class TestShowFigures {
         @Test
-        void showFigures() {
+        void testShowFigures() {
             //Given
             ShapeCollector sc = new ShapeCollector();
             Square sq1 = new Square("Square", 3.5);
+            List<Square> list = new ArrayList();
+            list.add(sq1);
 
             //When
             sc.addFigure(sq1);
 
             //Then
-            Assertions.assertEquals(sc.showFigures(), "Square");
+            Assertions.assertEquals(sc.showFigures(), list);
+
+        }
+    }
+
+    @Nested
+    @DisplayName("Test to Get(i) Figure")
+    class TestGetFigure {
+        @Test
+        void testGetFigure() {
+            //Given
+            ShapeCollector sc = new ShapeCollector();
+            Square sq1 = new Square("Square", 3.5);
+            List<Square> list = new ArrayList();
+            list.add(sq1);
+            //When
+            sc.addFigure(sq1);
+            //Then
+            Assertions.assertEquals(sc.getFigure(0), list.get(0));
 
         }
     }
