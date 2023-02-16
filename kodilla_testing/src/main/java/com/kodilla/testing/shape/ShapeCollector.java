@@ -18,12 +18,16 @@ public class ShapeCollector {
         return shapeList.get(n);
     }
 
-    public List<Shape> showFigures(){
-       /* String figuresName = "";
-        for (int i=0 ; i<shapeList.size(); i++){
-            figuresName += shapeList.get(i).getShapeName();
-        }*/
-        return shapeList;
+    public String showFigures() {
+        String figures = "";
+        for (int i = 0; i < shapeList.size(); i++) {
+            if (i == shapeList.size() - 1) {
+                figures += shapeList.get(i).getShapeName();
+            } else {
+                figures += shapeList.get(i).getShapeName() + ", ";
+            }
+        }
+        return figures;
     }
 
     public List<Shape> getShapeList() {

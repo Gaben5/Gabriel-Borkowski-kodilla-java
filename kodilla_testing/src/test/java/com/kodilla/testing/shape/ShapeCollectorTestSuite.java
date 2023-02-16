@@ -53,14 +53,16 @@ public class ShapeCollectorTestSuite {
             //Given
             ShapeCollector sc = new ShapeCollector();
             Square sq1 = new Square("Square", 3.5);
-            List<Square> list = new ArrayList();
-            list.add(sq1);
+            Square tr1 = new Square("Triangle", 5.5);
+            String figures;
+            figures = tr1.getShapeName()+", "+sq1.getShapeName();
 
             //When
+            sc.addFigure(tr1);
             sc.addFigure(sq1);
 
             //Then
-            Assertions.assertEquals(sc.showFigures(), list);
+            Assertions.assertEquals(sc.showFigures(), "Triangle, Square");
 
         }
     }
