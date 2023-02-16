@@ -18,7 +18,7 @@ public class WeatherForecast {
         }
         return resultMap;
     }
-    public Double AvgTemperature(){
+    public Double avgTemperature(){
         Collection<Double> collection = temperatures.getTemperatures().values();
         double avg = 0;
         for (Double avarage: collection){
@@ -30,7 +30,7 @@ public class WeatherForecast {
 
 
 
-    public Double MedianTemperature(){
+    public Double medianTemperature(){
         double median = 0.0;
         List<Double> medianNumbers = new ArrayList<>();
         medianNumbers.addAll(temperatures.getTemperatures().values());
