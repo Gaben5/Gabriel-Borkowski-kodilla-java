@@ -1,38 +1,61 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
-import com.kodilla.stream.lambda.*;
-import com.kodilla.stream.reference.FunctionalCalculator;
+
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 
 public class StreamMain {
     public static void main(String[] args) {
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        //Collectors.toList()
+        BookDirectory theBookDirectory = new BookDirectory();
+        List<Book> theResultListOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .collect(Collectors.toList());
 
-        System.out.println("Calculate expressions with lambdas");
-        expressionExecutor.executeExpression(10,5,(a,b) -> a + b);
-        expressionExecutor.executeExpression(10,5,(a,b) -> a - b);
-        expressionExecutor.executeExpression(10,5,(a,b) -> a * b);
-        expressionExecutor.executeExpression(10,5,(a,b) -> a / b);
-
-        System.out.println("Calculate expressions with method references");
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(3,4, FunctionalCalculator::divideAByB);
+        System.out.println("#elements: " + theResultListOfBooks.size());
+        theResultListOfBooks.stream()
+                .forEach(System.out::println);
 
 
-        System.out.println("Decorate Texts: ");
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
-        poemBeautifier.beautify("TestTextToDecorate", (textToDecorate) -> "ABC"+textToDecorate+"ABC");
-        poemBeautifier.beautify("TestTextToDecorate", (textToDecorate) ->  textToDecorate.toUpperCase());
-        poemBeautifier.beautify("TestTextToDecorate", (textToDecorate) ->  textToDecorate.replace('T','D'));
-        poemBeautifier.beautify("TestTextToDecorate", (textToDecorate) ->  textToDecorate.toLowerCase());
+        //Collectors.toMap()
+        Map<String, Book> theResultMapOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .collect(Collectors.toMap(Book::getSignature, book -> book));
 
+        System.out.println("#elements: " + theResultMapOfBooks.size());
+        theResultMapOfBooks.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
 
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+        //Collectors.joining()
 
+        String theResultStringOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .map(Book::toString)
+                .collect(Collectors.joining(",\n","<<",">>"));
 
+        System.out.println(theResultStringOfBooks);
+
+        //7.3
+        Forum forum = new Forum();
+        Map<Integer,ForumUser> theResultofUsers = forum.getUserList().stream()
+                .filter(forumUser -> forumUser.getSex() == 'M')
+                .filter(forumUser -> forumUser.getDateOfBirth().isBefore(LocalDate.parse("2003-02-18")))
+                .filter(forumUser -> forumUser.getQuantityOfPosts() > 1)
+                .collect(Collectors.toMap(ForumUser::getUserId,forumUser -> forumUser));
+
+        System.out.println("7.3  #elements: "+ theResultofUsers.size());
+        theResultofUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
     }
 }
