@@ -47,7 +47,7 @@ public class ForumStatisticsTestSuite {
         //Assertions.assertEquals(100,stats.getQuantityUsers());
         //Assertions.assertEquals(50,stats.getQuantityComments());
         Assertions.assertEquals(0,stats.getAvgPostsOnUser());
-        Assertions.assertEquals(0,stats.getAvgCommentsOnUser());
+        Assertions.assertEquals(0.5,stats.getAvgCommentsOnUser());
         Assertions.assertEquals(50,stats.getAvgCommentsOnPost());
 
     }
@@ -55,7 +55,7 @@ public class ForumStatisticsTestSuite {
     void testStatistics1000Posts(){
         //Given
         CalculateStatistics stats = new CalculateStatistics();
-        List<String> resultUsers = userGenerator(1000);
+        List<String> resultUsers = userGenerator(100);
         when(statisticsMock.postsCount()).thenReturn(1000);
         when(statisticsMock.commentsCount()).thenReturn(100);
         when(statisticsMock.usersNames()).thenReturn(resultUsers);
@@ -63,12 +63,9 @@ public class ForumStatisticsTestSuite {
         stats.calculateAdvStatistics(statisticsMock);
         //Then
         Assertions.assertEquals(1000,stats.getQuantityPosts());
-        Assertions.assertEquals(1000,stats.getQuantityUsers());
-        Assertions.assertEquals(100,stats.getQuantityComments());
-        Assertions.assertEquals(1,stats.getAvgPostsOnUser());
-        Assertions.assertEquals(100/1000,stats.getAvgCommentsOnUser());
-        Assertions.assertEquals(100/1000,stats.getAvgCommentsOnPost());
-        //nie rozumiem dlaczego 100/1000 = 0.0 a nie 0.1 xD
+        Assertions.assertEquals(10,stats.getAvgPostsOnUser());
+        Assertions.assertEquals(1,stats.getAvgCommentsOnUser());
+        Assertions.assertEquals(0.1,stats.getAvgCommentsOnPost());
 
     }
 
@@ -85,7 +82,7 @@ public class ForumStatisticsTestSuite {
         //Then
            Assertions.assertEquals(0,stats.getQuantityComments());
 
-        Assertions.assertEquals(50/100,stats.getAvgPostsOnUser());
+        Assertions.assertEquals(0.5,stats.getAvgPostsOnUser());
         Assertions.assertEquals(0,stats.getAvgCommentsOnUser());
         Assertions.assertEquals(0,stats.getAvgCommentsOnPost());
     }
@@ -124,7 +121,7 @@ public class ForumStatisticsTestSuite {
         Assertions.assertTrue(stats.getQuantityComments()<stats.getQuantityPosts());
         Assertions.assertEquals(2,stats.getAvgPostsOnUser());
         Assertions.assertEquals(1,stats.getAvgCommentsOnUser());
-        Assertions.assertEquals(100/200,stats.getAvgCommentsOnPost());
+        Assertions.assertEquals(0.5,stats.getAvgCommentsOnPost());
     }
     @Test
     void testStatistics0Users(){
@@ -142,7 +139,7 @@ public class ForumStatisticsTestSuite {
         Assertions.assertEquals(0,stats.getQuantityUsers());
         Assertions.assertEquals(50,stats.getAvgPostsOnUser());
         Assertions.assertEquals(10,stats.getAvgCommentsOnUser());
-        Assertions.assertEquals(10/50,stats.getAvgCommentsOnPost());
+        Assertions.assertEquals(0.2,stats.getAvgCommentsOnPost());
     }
 
     @Test

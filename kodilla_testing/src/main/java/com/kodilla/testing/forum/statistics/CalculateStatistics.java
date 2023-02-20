@@ -24,16 +24,16 @@ public class CalculateStatistics {
         quantityPosts = statistics.postsCount();
         quantityComments = statistics.commentsCount();
             if (quantityUsers != 0) {
-                avgPostsOnUser = quantityPosts/ quantityUsers;
-                avgCommentsOnUser = quantityComments / quantityUsers;
+                avgPostsOnUser = quantityPosts/ (double)quantityUsers;
+                avgCommentsOnUser = quantityComments / (double)quantityUsers;
             }else {
-                avgPostsOnUser = quantityPosts / 1;
-                avgCommentsOnUser = quantityComments / 1;
+                avgPostsOnUser = quantityPosts;
+                avgCommentsOnUser = quantityComments;
             }
             if (quantityPosts != 0) {
-                avgCommentsOnPost = quantityComments / quantityPosts;
+                avgCommentsOnPost = quantityComments / (double)quantityPosts;
             }else {
-                avgCommentsOnPost = quantityComments / 1;
+                avgCommentsOnPost = quantityComments;
             }
       //  }
     }
