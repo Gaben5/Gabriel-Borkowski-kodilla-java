@@ -5,6 +5,7 @@ import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
+import com.kodilla.stream.mirror.MirrorReflection;
 
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
@@ -58,4 +59,5 @@ public class StreamMain {
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
     }
+
 }
