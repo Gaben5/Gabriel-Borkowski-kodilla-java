@@ -1,61 +1,64 @@
 package com.kodilla.rps;
 
-import com.kodilla.rps.game.GameAbstractClass;
+import com.kodilla.rps.game.AbstractRPS;
 import com.kodilla.rps.game.GameRPS;
 import com.kodilla.rps.game.GameRPSLS;
 
+import java.util.Scanner;
+
 public class RpsRunner {
-    private static String selectName(){
+    Scanner scanner = new Scanner(System.in);
+    private String selectName(){
         System.out.println("Select your nick");
-        return GameAbstractClass.scanner.next();
+        return scanner.next();
     }
-    private static int roundsNumber(String username){
+    private int roundsNumber(String username){
         System.out.println("Hello "+ username + " how many rounds would you like to play ?");
-        while (!GameAbstractClass.scanner.hasNextInt()) {
-            GameAbstractClass.scanner.next();
+        while (!AbstractRPS.scanner.hasNextInt()) {
+            scanner.next();
             System.out.println("Select number of rounds");
         }
-        return GameAbstractClass.scanner.nextInt();
+        return AbstractRPS.scanner.nextInt();
     }
-    private static GameAbstractClass chooseGame(String name, int roundsCount) {
-        boolean end = false;
-        GameAbstractClass theGame = null;
-        String numberGame;
-        while(!end) {
+    private AbstractRPS chooseGame(String name, int roundsCount) {
+        GameRPS gameRPS = new GameRPS(name,roundsCount);
+        GameRPSLS gameRPSLS = new GameRPSLS(name,roundsCount);
+        String gameNumber;
+        while(true) {
             System.out.println("Pick the game (1) Rock-Paper-Scissors ; (2) Rock-Paper-Scissors-Lizard-Spock");
-            numberGame = GameAbstractClass.scanner.next();
-            switch (numberGame){
+            gameNumber = scanner.next();
+            switch (gameNumber){
                 case "1" ->{
-                    System.out.println(GameRPS.getDescription());
-                    theGame = new GameRPS(name,roundsCount);
-                    end = true;
+                    System.out.println(gameRPS.getDescription());
+                    return gameRPS;
                 }
                 case "2" ->{
-                    System.out.println(GameRPSLS.getDescription());
-                    theGame = new GameRPSLS(name,roundsCount);
-                    end = true;
+                    System.out.println(gameRPSLS.getDescription());
+                    return gameRPSLS;
                 }
             }
         }
-        return theGame;
     }
-    private static void runGame(String userName, GameAbstractClass game){
+    private void runGame(AbstractRPS game){
         boolean end = false;
         System.out.println(game.instruction());
         while (!end){
             System.out.println(game.select());
-            String s = GameAbstractClass.scanner.next();
+            String s = AbstractRPS.scanner.next();
             game.chooseWeapon(s);
             game.isNextRound();
             end = game.isEnd();
         }
     }
-
-    public static void main(String[] args) {
+    private void startGame(){
         final String name = selectName();
         final int roundsCount = roundsNumber(name);
 
-        GameAbstractClass newGame = chooseGame(name,roundsCount);
-        runGame(name,newGame);
+        AbstractRPS newGame = chooseGame(name,roundsCount);
+        runGame(newGame);
+    }
+
+    public static void main(String[] args) {
+        new RpsRunner().startGame();
     }
 }

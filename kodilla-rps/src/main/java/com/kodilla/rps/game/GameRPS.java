@@ -3,8 +3,8 @@ package com.kodilla.rps.game;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameRPS extends GameAbstractClass {
-    private static final String description = "This is Rock-Paper-Scissors game";
+public class GameRPS extends AbstractRPS {
+    private final String description = "This is Rock-Paper-Scissors game";
 
 
     @Override
@@ -29,9 +29,6 @@ public class GameRPS extends GameAbstractClass {
 
     @Override
     public void userMove(String s) {
-       /* int userMove = Integer.parseInt(s) -1;
-        int computerMove = random.nextInt(3);
-        roundWinner(userMove,computerMove);*/
         switch (s) {
             case "1":
             case "2":
@@ -48,20 +45,20 @@ public class GameRPS extends GameAbstractClass {
 
     public void roundWinner(int computerMove, int userMove){
         int result =(computerMove - userMove + 3)%3;
-        System.out.println("You pick: "+numberWeapon(userMove) + " and computer pick: "+numberWeapon(computerMove));
+        System.out.println("You pick: "+ weaponNumber(userMove) + " and computer pick: "+ weaponNumber(computerMove));
         switch (result){
             case 0 ->{
-                ties++;
+                incWins();
                 System.out.println("Tie");
 
             }
             case 1 ->{
-                loses++;
+                incLoses();
                 System.out.println("You lose");
 
             }
             case 2 ->{
-                wins++;
+                incTies();
                 System.out.println("You win");
 
             }
@@ -69,7 +66,7 @@ public class GameRPS extends GameAbstractClass {
         }
     }
 
-    public String numberWeapon(int i){
+    public String weaponNumber(int i){
         Map<Integer,String> nw = new HashMap<>();
         nw.put(0,"Rock");
         nw.put(1,"Paper");
@@ -77,12 +74,7 @@ public class GameRPS extends GameAbstractClass {
         return nw.get(i);
     }
 
-    public static String getDescription() {
+    public String getDescription() {
         return description;
     }
-
-
-    /* public static String getInstruction() {
-        return instruction;
-    }*/
 }

@@ -5,17 +5,26 @@ import com.kodilla.rps.RpsRunner;
 import java.util.Random;
 import java.util.Scanner;
 
-public abstract class GameAbstractClass {
+public abstract class AbstractRPS {
     String username;
-    int roundsCount;
-    int wins = 0;
-    int loses = 0;
-    int ties = 0;
-    boolean end = false;
+    private int roundsCount;
+    private int wins = 0;
+    private int loses = 0;
+    private int ties = 0;
+    private boolean end = false;
     public abstract String instruction();
     public abstract String select();
     public void isNextRound(){
         if (wins+loses+ties >=roundsCount)matchWinner();
+    }
+    public void incWins(){
+        wins++;
+    }
+    public void incLoses(){
+        loses++;
+    }
+    public void incTies(){
+        ties++;
     }
     public void matchWinner(){
         setEnd(true);
@@ -67,7 +76,7 @@ public abstract class GameAbstractClass {
 
 
 
-    public GameAbstractClass(String username, int roundsCount) {
+    public AbstractRPS(String username, int roundsCount) {
         this.username = username;
         this.roundsCount = roundsCount;
     }
@@ -98,4 +107,6 @@ public abstract class GameAbstractClass {
     public void setEnd(boolean end){
         this.end = end;
     }
+
+
 }
