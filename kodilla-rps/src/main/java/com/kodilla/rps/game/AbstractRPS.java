@@ -36,8 +36,8 @@ public abstract class AbstractRPS {
         else System.out.println("Tie!!");
     }
 
-    public static Scanner scanner = new Scanner(System.in);
-    public static Random random = new Random();
+    private static Scanner scanner = new Scanner(System.in);
+    private static Random random = new Random();
 
     public void chooseWeapon(String s){
         switch (s) {

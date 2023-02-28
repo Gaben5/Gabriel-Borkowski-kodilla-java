@@ -7,18 +7,18 @@ import com.kodilla.rps.game.GameRPSLS;
 import java.util.Scanner;
 
 public class RpsRunner {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
     private String selectName(){
         System.out.println("Select your nick");
         return scanner.next();
     }
     private int roundsNumber(String username){
         System.out.println("Hello "+ username + " how many rounds would you like to play ?");
-        while (!AbstractRPS.scanner.hasNextInt()) {
+        while (!scanner.hasNextInt()) {
             scanner.next();
             System.out.println("Select number of rounds");
         }
-        return AbstractRPS.scanner.nextInt();
+        return scanner.nextInt();
     }
     private AbstractRPS chooseGame(String name, int roundsCount) {
         GameRPS gameRPS = new GameRPS(name,roundsCount);
@@ -44,7 +44,7 @@ public class RpsRunner {
         System.out.println(game.instruction());
         while (!end){
             System.out.println(game.select());
-            String s = AbstractRPS.scanner.next();
+            String s = scanner.next();
             game.chooseWeapon(s);
             game.isNextRound();
             end = game.isEnd();

@@ -2,9 +2,11 @@ package com.kodilla.rps.game;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class GameRPSLS extends AbstractRPS {
     private final String description = "This is Rock-Paper-Scissors-Lizard-Spock game";
+    private Random random = new Random();
 
     @Override
     public final String select() {
