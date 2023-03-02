@@ -20,12 +20,6 @@ public class GameRPS extends AbstractRPS {
         return "(1) - Rock, \n(2) - Paper, \n(3) - Scissors, \n(x) - leave game, \n(n) - new game";
     }
 
-
-    /*@Override
-    public String chooseWeapon(String weapon) {
-        return null;
-    }*/
-
     public GameRPS(String username, int roundsCount) {
         super(username, roundsCount);
     }

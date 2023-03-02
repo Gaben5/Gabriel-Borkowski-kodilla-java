@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public abstract class AbstractRPS {
-    String username;
+    private String username;
     private int roundsCount;
     private int wins = 0;
     private int loses = 0;
@@ -14,6 +14,8 @@ public abstract class AbstractRPS {
     private boolean end = false;
     public abstract String instruction();
     public abstract String select();
+    private Scanner scanner = new Scanner(System.in);
+    private Random random = new Random();
     public void isNextRound(){
         if (wins+loses+ties >=roundsCount)matchWinner();
     }
@@ -35,9 +37,6 @@ public abstract class AbstractRPS {
         else if (result < 0) System.out.println("You lose the game");
         else System.out.println("Tie!!");
     }
-
-    private static Scanner scanner = new Scanner(System.in);
-    private static Random random = new Random();
 
     public void chooseWeapon(String s){
         switch (s) {
@@ -80,9 +79,9 @@ public abstract class AbstractRPS {
         this.username = username;
         this.roundsCount = roundsCount;
     }
-    public abstract void userMove(String s);
+    abstract void userMove(String s);
 
-    public String getUsername() {
+   public String getUsername() {
         return username;
     }
 
