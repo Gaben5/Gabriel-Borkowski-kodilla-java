@@ -27,16 +27,12 @@ public class GameRPS extends AbstractRPS {
     @Override
     public void userMove(String s) {
         switch (s) {
-            case "1":
-            case "2":
-            case "3":
+            case "1", "2", "3" -> {
                 int computerMove = random.nextInt(3);
                 int i = Integer.parseInt(s) - 1;
                 roundWinner(computerMove, i);
-                break;
-            default:
-                System.out.println("Try again...");
-                break;
+            }
+            default -> System.out.println("Try again...");
         }
     }
 
