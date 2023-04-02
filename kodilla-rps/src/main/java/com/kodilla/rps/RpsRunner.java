@@ -7,7 +7,7 @@ import com.kodilla.rps.game.GameRPSLS;
 import java.util.Scanner;
 
 public class RpsRunner {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
     private String selectName(){
         System.out.println("Select your nick");
         return scanner.next();

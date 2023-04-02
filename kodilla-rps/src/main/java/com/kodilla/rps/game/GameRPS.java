@@ -6,8 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameRPS extends AbstractRPS {
-    private final String description = "This is Rock-Paper-Scissors game";
-    private Random random = new Random();
+    private final Random random = new Random();
 
 
     @Override
@@ -58,7 +57,6 @@ public class GameRPS extends AbstractRPS {
 
         }
     }
-
     public String weaponNumber(int i){
         Map<Integer,String> nw = new HashMap<>();
         nw.put(0,"Rock");
@@ -68,6 +66,6 @@ public class GameRPS extends AbstractRPS {
     }
 
     public String getDescription() {
-        return description;
+        return "This is Rock-Paper-Scissors game";
     }
 }

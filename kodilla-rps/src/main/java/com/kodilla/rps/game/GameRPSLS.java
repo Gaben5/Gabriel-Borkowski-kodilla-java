@@ -5,14 +5,12 @@ import java.util.Map;
 import java.util.Random;
 
 public class GameRPSLS extends AbstractRPS {
-    private final String description = "This is Rock-Paper-Scissors-Lizard-Spock game";
-    private Random random = new Random();
+    private final Random random = new Random();
 
     @Override
     public final String select() {
         return "(1) - Rock, \n(2) - Spock, \n(3) - Paper,\n(4) - Lizard, \n(5) - Scissors, \n(x) - leave game, \n(n) - new game";
     }
-
     @Override
     public final String instruction() {
         return """
@@ -25,12 +23,9 @@ public class GameRPSLS extends AbstractRPS {
                 Select your weapon:
                 """;
     }
-
-
     public GameRPSLS(String username, int roundsCount) {
         super(username, roundsCount);
     }
-
     @Override
     public void userMove(String s) {
         switch (s) {
@@ -45,21 +40,19 @@ public class GameRPSLS extends AbstractRPS {
     public void roundWinner(int computerMove, int userMove){
         int result = (computerMove - userMove + 5) % 5;
         System.out.println("You pick: "+ weaponNumber(userMove) + " and computer pick: "+ weaponNumber(computerMove));
-        switch (result){
-            case 0:
+        switch (result) {
+            case 0 -> {
                 incTies();
                 System.out.println("Tie");
-                break;
-            case 1:
-            case 2:
+            }
+            case 1, 2 -> {
                 incLoses();
                 System.out.println("You lose");
-                break;
-            case 3:
-            case 4:
+            }
+            case 3, 4 -> {
                 incWins();
                 System.out.println("You Win");
-                break;
+            }
         }
     }
     public String weaponNumber(int i){
@@ -71,9 +64,8 @@ public class GameRPSLS extends AbstractRPS {
         wp.put(4,"Scissors");
         return wp.get(i);
     }
-
     public String getDescription(){
-        return description;
+        return "This is Rock-Paper-Scissors-Lizard-Spock game";
     }
 
 }
