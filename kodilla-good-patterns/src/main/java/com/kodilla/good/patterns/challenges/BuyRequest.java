@@ -1,21 +1,15 @@
 package com.kodilla.good.patterns.challenges;
-
-import java.time.LocalDateTime;
-
 public class BuyRequest {
     private final User user;
-    private final boolean isAvaliable;
-
-    public BuyRequest(final User user, final boolean isAvaliable) {
+    private final Product product;
+    public BuyRequest(final User user, final Product product) {
         this.user = user;
-        this.isAvaliable = isAvaliable;
+        this.product = product;
     }
-
     public User getUser() {
         return user;
     }
-
-    public boolean isAvaliable() {
-        return isAvaliable;
+    public Product getProduct() {
+        return product;
     }
 }
