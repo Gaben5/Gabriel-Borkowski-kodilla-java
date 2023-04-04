@@ -10,7 +10,7 @@ public class ProductOrderService {
         this.sellRepository = sellRepository;
     }
     public SaleDto process(final BuyRequest buyRequest) {
-        boolean isAvailable = sellService.sell(buyRequest.getUser(), (Product) buyRequest.getProduct());
+        boolean isAvailable = sellService.sell(buyRequest.getUser(),buyRequest.getProduct());
 
         if (isAvailable) {
             informationService.inform(buyRequest.getUser());
