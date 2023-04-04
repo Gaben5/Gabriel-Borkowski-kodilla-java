@@ -10,13 +10,14 @@ public class OrderService {
         this.infService = infService;
     }
     public void process(final BuyRequest buyRequest){
-        boolean isAvailable = sellService.sell(buyRequest.getSupplier(),buyRequest.getProduct(),buyRequest.getQuantity());
+        boolean isAvailable = sellService.sell(buyRequest.getOrdersSuppliers(),buyRequest.getProduct(),buyRequest.getQuantity());
 
         if (isAvailable){
-            infService.information(buyRequest.getSupplier());
-            new Dto(buyRequest.getSupplier(), true);
+            buyRequest.getOrdersSuppliers().process();
+            infService.information(buyRequest.getOrdersSuppliers());
+            new Dto(buyRequest.getOrdersSuppliers(), true);
         }else {
-            new Dto(buyRequest.getSupplier(), false);
+            new Dto(buyRequest.getOrdersSuppliers(), false);
         }
     }
 }
