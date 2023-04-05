@@ -1,11 +1,11 @@
 package com.kodilla.good.patterns.food2Door;
 
-public class GlutenFreeShop implements OrdersSuppliers{
-    public GlutenFreeShop() {
+import java.util.Map;
 
-    }
+public class GlutenFreeShop implements OrdersSuppliers{
     @Override
-    public void process() {
-        System.out.println("New order for GlutenFreeShop");
+    public boolean process(BuyRequest buyRequest, Map<String, Integer> productsAvailable) {
+        System.out.println("Process GFS");
+        return true;
     }
 }

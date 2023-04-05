@@ -1,23 +1,25 @@
 package com.kodilla.good.patterns.food2Door;
 
 
-public class OrderService {
-    private final SellService sellService;
-    private final InfService infService;
+import java.util.Map;
 
-    public OrderService(SellService sellService, InfService infService) {
-        this.sellService = sellService;
-        this.infService = infService;
+public class OrderService {
+    private final OrdersSuppliers ordersSuppliers;
+
+    public OrderService(OrdersSuppliers ordersSuppliers) {
+        this.ordersSuppliers = ordersSuppliers;
     }
+
     public void process(final BuyRequest buyRequest){
-        boolean isAvailable = sellService.sell(buyRequest.getOrdersSuppliers(),buyRequest.getProduct(),buyRequest.getQuantity());
+        Map<String, Integer> productsAvailable = buyRequest.getDistributor().getProducts();
+
+        boolean isAvailable = ordersSuppliers.process(buyRequest,productsAvailable);
 
         if (isAvailable){
-            buyRequest.getOrdersSuppliers().process();
-            infService.information(buyRequest.getOrdersSuppliers());
-            new Dto(buyRequest.getOrdersSuppliers(), true);
+            new Dto(buyRequest.getDistributor(), true);
         }else {
-            new Dto(buyRequest.getOrdersSuppliers(), false);
+            new Dto(buyRequest.getDistributor(), false);
+
         }
     }
 }
