@@ -1,25 +1,25 @@
 package com.kodilla.good.patterns.food2Door;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<String,Integer> productsAvailable = new HashMap<>();
-        productsAvailable.put("Apple", 10);
-        productsAvailable.put("Orange", 20);
-        productsAvailable.put("Banana", 120);
+        Map<String,Integer> productsOrdered = null;
+        productsOrdered.put("Apple",10);
+        productsOrdered.put("Orange",20);
+        productsOrdered.put("Banana",30);
+        Map<String,Integer> productsAvailable = null;
+        productsOrdered.put("Apple",5);
+        productsOrdered.put("Orange",10);
+        productsOrdered.put("Banana",15);
 
-        Distributor distributor = new Distributor("Healthy Shop", "Kielce", productsAvailable);
+        OrderService orderService = new OrderService();
 
-        HashMap<String,Integer> order = new HashMap<>();
-        order.put("Apple",1);
-        order.put("Orange",5);
-        order.put("Banana",10);
-
-        BuyRequest buyRequest = new BuyRequest(distributor,order);
-
-        OrderService orderService = new OrderService(new ExtraFoodShop());
-        orderService.process(buyRequest);
+        orderService.process(new BuyRequest(
+                new HealthyShop(productsAvailable),
+                productsOrdered,
+                new User("Maciek","Kielce")
+        ));
 
 
     }

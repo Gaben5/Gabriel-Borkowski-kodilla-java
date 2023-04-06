@@ -3,12 +3,17 @@ package com.kodilla.good.patterns.food2Door;
 import java.util.Map;
 
 public class BuyRequest {
-    private final Distributor distributor;
-    public BuyRequest(Distributor distributor, Map<String, Integer> products) {
-        this.distributor = distributor;
+    private final OrdersSuppliers ordersSuppliers;
+    private final Map<String, Integer> productsOrdered;
+    public BuyRequest(OrdersSuppliers ordersSuppliers, Map<String, Integer> productsOrdered, User user) {
+        this.ordersSuppliers = ordersSuppliers;
+        this.productsOrdered = productsOrdered;
     }
-    public Distributor getDistributor() {
-        return distributor;
+    public OrdersSuppliers getOrdersSuppliers() {
+        return ordersSuppliers;
     }
 
+    public Map<String, Integer> getProductsOrdered() {
+        return productsOrdered;
+    }
 }
