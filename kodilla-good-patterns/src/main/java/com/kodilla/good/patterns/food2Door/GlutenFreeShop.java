@@ -6,7 +6,7 @@ public class GlutenFreeShop implements OrdersSuppliers{
     public GlutenFreeShop() {
     }
     @Override
-    public boolean process() {
+    public boolean process(Map<String, Integer> productsAvailable) {
         System.out.println("Process GFS");
         return true;
     }

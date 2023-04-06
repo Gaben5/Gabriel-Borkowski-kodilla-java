@@ -3,10 +3,10 @@ package com.kodilla.good.patterns.food2Door;
 import java.util.Map;
 
 public class HealthyShop implements OrdersSuppliers{
-    public HealthyShop(Map<String, Integer> productsAvailable) {
+    public HealthyShop() {
     }
     @Override
-    public boolean process() {
+    public boolean process(Map<String, Integer> productsAvailable) {
         System.out.println("Process HS");
         return true;
     }

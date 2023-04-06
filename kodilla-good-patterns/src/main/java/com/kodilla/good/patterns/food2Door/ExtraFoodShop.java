@@ -6,7 +6,7 @@ public class ExtraFoodShop implements OrdersSuppliers{
     public ExtraFoodShop() {
     }
     @Override
-    public boolean process() {
+    public boolean process(Map<String, Integer> productsAvailable) {
         System.out.println("Process EFS");
         return true;
     }

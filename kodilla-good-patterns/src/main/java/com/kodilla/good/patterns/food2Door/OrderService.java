@@ -4,7 +4,11 @@ import java.util.Map;
 
 public class OrderService {
     public void process(final BuyRequest buyRequest){
-        boolean isAvailable = buyRequest.getOrdersSuppliers().process();
+        Map<String,Integer> productsOrdered = null;
+        productsOrdered.put("Apple",10);
+        productsOrdered.put("Orange",20);
+        productsOrdered.put("Banana",30);
+        boolean isAvailable = buyRequest.getOrdersSuppliers().process(productsOrdered);
 
         if (isAvailable){
             new Dto(buyRequest.getOrdersSuppliers(), true);
@@ -12,4 +16,5 @@ public class OrderService {
             new Dto(buyRequest.getOrdersSuppliers(), false);
         }
     }
+
 }
