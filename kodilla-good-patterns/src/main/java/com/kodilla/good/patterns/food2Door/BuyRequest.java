@@ -1,11 +1,11 @@
 package com.kodilla.good.patterns.food2Door;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class BuyRequest {
     private final OrdersSuppliers ordersSuppliers;
-    private final Map<String, Integer> productsOrdered;
-    public BuyRequest(OrdersSuppliers ordersSuppliers, Map<String, Integer> productsOrdered, User user) {
+    private final HashMap<String, Integer> productsOrdered;
+    public BuyRequest(OrdersSuppliers ordersSuppliers, HashMap<String, Integer> productsOrdered, User user) {
         this.ordersSuppliers = ordersSuppliers;
         this.productsOrdered = productsOrdered;
     }
@@ -13,7 +13,7 @@ public class BuyRequest {
         return ordersSuppliers;
     }
 
-    public Map<String, Integer> getProductsOrdered() {
+    public HashMap<String, Integer> getProductsOrdered() {
         return productsOrdered;
     }
 }

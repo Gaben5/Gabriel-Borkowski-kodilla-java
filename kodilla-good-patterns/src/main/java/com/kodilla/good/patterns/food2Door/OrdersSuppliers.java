@@ -1,7 +1,8 @@
 package com.kodilla.good.patterns.food2Door;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public interface OrdersSuppliers {
-    boolean process(Map<String, Integer> productsAvailable);
+    boolean process(HashMap<String, Integer> productsOrdered);
 }
