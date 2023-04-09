@@ -3,8 +3,8 @@ package com.kodilla.good.patterns.flights;
 import java.util.Objects;
 
 public class Flight {
-    private String departure;
-    private String arrival;
+    private final String departure;
+    private final String arrival;
 
     public Flight(String departure, String arrival) {
         this.departure = departure;
@@ -21,7 +21,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight:" + '\n' +
+        return '\n' +
                 "departure= " + departure + '\n' +
                 "arrival= " + arrival + '\n';
     }
