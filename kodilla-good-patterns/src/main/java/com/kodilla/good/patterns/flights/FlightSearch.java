@@ -1,10 +1,11 @@
 package com.kodilla.good.patterns.flights;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class FlightSearch {
-    private final ArrayList<Flight> flights = new ArrayList<>();
+    private final List<Flight> flights = new ArrayList<>();
 
     public FlightSearch() {
         flights.add(new Flight("Kraków","Wrocław"));
@@ -23,9 +24,9 @@ public class FlightSearch {
             System.out.println("Direction of flight doesn't Exist");
         }
     }
-    public ArrayList<FlightWithTransfer> isIndirectFlightExist(Flight flight){
+    public List<FlightWithTransfer> isIndirectFlightExist(Flight flight){
         try {
-            return (ArrayList<FlightWithTransfer>) flights.stream()
+            return  flights.stream()
                     .filter(f-> f.getDeparture().equals(flight.getDeparture()))
                     .flatMap(f1->flights.stream()
                             .filter(f2->f2.getDeparture().equals(f1.getArrival()))
