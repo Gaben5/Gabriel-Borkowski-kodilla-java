@@ -1,0 +1,147 @@
+create DATABASE kodilla_course;
+
+show databases;
+
+create user 'kodilla_user' identified with MYSQL_NATIVE_PASSWORD by 'kodilla_Pass123';
+
+grant ALL PRIVILEGES ON kodilla_course.* to kodilla_user;
+
+show TABLES;
+
+create table USERS (
+    ID SERIAL PRIMARY KEY ,
+    FIRSTNAME VARCHAR(100),
+    LASTNAME VARCHAR(100)
+);
+
+CREATE TABLE POSTS(
+    ID SERIAL PRIMARY KEY ,
+    USER_ID BIGINT UNSIGNED NOT NULL ,
+    BODY VARCHAR(1024),
+    FOREIGN KEY (USER_ID) REFERENCES USERS(ID)
+);
+
+SELECT * FROM USERS;
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ('John','Smith');
+
+commit;
+
+insert into posts(user_id, body)
+values (7,"This is first post on this fotum!");
+
+commit;
+
+select * from posts;
+
+select * from users;
+
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ("Zachary", "Lee");
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ("Stephanie", "Kovalsky");
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ("Thomas", "Landgren");
+
+INSERT INTO USERS (FIRSTNAME, LASTNAME)
+VALUES ("John", "Thomson");
+
+INSERT INTO POSTS (USER_ID, BODY)
+VALUES (8, "This is my first post too!");
+
+INSERT INTO POSTS (USER_ID, BODY)
+VALUES (8, "How are you?");
+
+INSERT INTO POSTS (USER_ID, BODY)
+VALUES (7, "Quite good, thanks bro!");
+
+INSERT INTO POSTS (USER_ID, BODY)
+VALUES (14, "Yo all! Here is Thomas!");
+
+COMMIT;
+
+create table ISSUESLISTS (
+                             ID SERIAL PRIMARY KEY ,
+                             NAME VARCHAR(200) NOT NULL UNIQUE
+);
+
+SELECT * FROM ISSUESLISTS;
+
+CREATE TABLE ISSUES (
+                        ID SERIAL PRIMARY KEY ,
+                        ISSUESLIST_ID BIGINT UNSIGNED NOT NULL ,
+                        SUMMARY VARCHAR(100),
+                        DESCRIPTION VARCHAR(1000),
+                        USSER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL ,
+                        FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID),
+                        FOREIGN KEY (USSER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+SELECT * FROM ISSUES;
+
+INSERT INTO ISSUESLISTS(NAME)
+VALUES ('ToDo');
+
+INSERT INTO ISSUESLISTS(NAME)
+VALUES ('In progress');
+
+INSERT INTO ISSUESLISTS(NAME)
+VALUES ('Done');
+
+SELECT * FROM ISSUESLISTS;
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (1, 'Task1', 'Task1 description', 7);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (1, 'Task2', 'Task2 description', 9);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (1, 'Task3', 'Task3 description', 11);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (1, 'Task4', 'Task4 description', 13);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (1, 'Task5', 'Task5 description', 7);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (2, 'Task6', 'Task6 description', 14);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (2, 'Task7', 'Task7 description', 8);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (2, 'Task8', 'Task8 description', 9);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (2, 'Task9', 'Task9 description', 14);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (2, 'Task10', 'Task10 description', 11);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (3, 'Task11', 'Task11 description', 10);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (3, 'Task12', 'Task12 description', 14);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (3, 'Task13', 'Task13 description', 8);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (3, 'Task14', 'Task14 description', 7);
+
+insert into ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USSER_ID_ASSIGNEDTO)
+VALUES (3, 'Task15', 'Task15 description', 11);
+
+SELECT * FROM ISSUES;
+
+commit;
+
+
+
