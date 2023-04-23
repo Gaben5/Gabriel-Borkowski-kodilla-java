@@ -144,4 +144,22 @@ SELECT * FROM ISSUES;
 commit;
 
 
+-------------------
+16.4
+
+select i.SUMMARY, il.NAME
+from issues i
+join issueslists il on il.ID = i.ISSUESLIST_ID;
+
+select i.SUMMARY, u.FIRSTNAME, u.LASTNAME
+from issues i
+join users u on i.USSER_ID_ASSIGNEDTO = u.ID;
+
+select u.FIRSTNAME, u.LASTNAME, count(i.SUMMARY)
+from users u
+join issues i on u.ID = i.USSER_ID_ASSIGNEDTO
+group by 1,2
+having count(i.SUMMARY) >0;
+
+
 
