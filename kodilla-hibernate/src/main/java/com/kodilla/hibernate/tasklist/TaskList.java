@@ -3,6 +3,7 @@ package com.kodilla.hibernate.tasklist;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 @Entity
+@Table(name = "TASKSLIST")
 public final class TaskList {
     private int id;
     private String listName;
@@ -18,13 +19,15 @@ public final class TaskList {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(unique = true)  //adnotacje @Column(name="..") wywalają błąd
+    @Column(name = "ID",unique = true)
     public int getId() {
         return id;
     }
+    @Column(name = "LISTNAME")
     public String getListName() {
         return listName;
     }
+    @Column(name = "DESCRIPTION")
     public String getDescription() {
         return description;
     }
