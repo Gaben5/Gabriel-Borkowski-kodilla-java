@@ -18,8 +18,8 @@ public final class TaskList {
     public TaskList() {
     }
 
-    public TaskList(String lastName, String description) {
-        this.listName = lastName;
+    public TaskList(String listName, String description) {
+        this.listName = listName;
         this.description = description;
     }
     @Id

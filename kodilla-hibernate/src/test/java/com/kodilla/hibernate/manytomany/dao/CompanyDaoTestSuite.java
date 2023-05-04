@@ -6,12 +6,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class CompanyDaoTestSuite {
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
+    private EmployeeDao employeeDao;
     @Test
     void testSameManyToMany(){
         //Given
@@ -55,5 +59,36 @@ public class CompanyDaoTestSuite {
         }catch (Exception e){
 
         }
+    }
+
+    @Test
+    void testQueryEmployee(){
+        //Given
+        Employee employee = new Employee("Lara","Smith");
+        employeeDao.save(employee);
+
+        //When
+        List<Employee> allSmith = employeeDao.retrieveAllSmith();
+        //Then
+        assertEquals(2,allSmith.size());
+
+        //CleanUp
+        int id = employee.getId();
+        employeeDao.deleteById(id);
+    }
+
+    @Test
+    void testNativeQueryCompany(){
+        //Given
+        Company company = new Company("Software GID");
+        companyDao.save(company);
+        //WHen
+        List<Company> companiesStartSoft = companyDao.retrieveAllCompaniesWhoStartsSoft();
+        //Then
+        assertEquals(2,companiesStartSoft.size());
+
+        //CleanUp
+        int id = company.getId();
+        companyDao.deleteById(id);
     }
 }
