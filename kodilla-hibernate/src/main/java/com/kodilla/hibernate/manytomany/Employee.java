@@ -4,10 +4,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-@NamedQuery(
-        name = "Employee.retrieveAllSmith",
-        query = "FROM Employee WHERE lastname = 'Smith'"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.retrieveAllSmith",
+                query = "FROM Employee WHERE lastname = 'Smith'"
+        ),
+        @NamedQuery(
+                name = "Employee.retrieveFromPartOfLastName",
+                query = "FROM Employee WHERE lastname like '%' || :LASTNAME || '%'"
+        )
+})
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {

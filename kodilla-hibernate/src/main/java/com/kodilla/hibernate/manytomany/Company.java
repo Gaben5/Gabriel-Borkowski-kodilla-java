@@ -4,10 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-@NamedNativeQuery(
-        name = "Company.retrieveAllCompaniesWhoStartsSoft",
-        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,4) = 'Soft'",
-        resultClass = Company.class
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.retrieveAllCompaniesWhoStartsSoft",
+                query = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,4) = 'Soft'",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveCompaniesByName",
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE '%' || :COMPANYNAME || '%'",
+                resultClass = Company.class
+        )}
 )
 @Entity
 @Table(name = "COMPANIES")
