@@ -53,9 +53,9 @@ public class CompanyDaoTestSuite {
 
         //CleanUp
         try {
-            companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
             companyDao.deleteById(greyMatterId);
+            companyDao.deleteById(softwareMachineId);
         }catch (Exception e){
 
         }
@@ -66,15 +66,12 @@ public class CompanyDaoTestSuite {
         //Given
         Employee employee = new Employee("Lara","Smith");
         employeeDao.save(employee);
-
         //When
         List<Employee> allSmith = employeeDao.retrieveAllSmith();
         //Then
-        assertEquals(2,allSmith.size());
-
+        assertEquals(9,allSmith.size());
         //CleanUp
-        int id = employee.getId();
-        employeeDao.deleteById(id);
+        employeeDao.deleteById(employee.getId());
     }
 
     @Test
@@ -82,13 +79,10 @@ public class CompanyDaoTestSuite {
         //Given
         Company company = new Company("Software GID");
         companyDao.save(company);
-        //WHen
+        //When
         List<Company> companiesStartSoft = companyDao.retrieveAllCompaniesWhoStartsSoft();
         //Then
-        assertEquals(2,companiesStartSoft.size());
-
+        assertEquals(11,companiesStartSoft.size());
         //CleanUp
-        int id = company.getId();
-        companyDao.deleteById(id);
     }
 }

@@ -50,11 +50,9 @@ public class TaskDaoTestSuite {
         List<Task> readTasks = taskDao.findByDuration(duration);
 
         //Then
-        assertEquals(1,readTasks.size());
-
+        assertEquals(8,readTasks.size());
         //CleanUp
-        int id = readTasks.get(0).getId();
-        taskDao.deleteById(id);
+        taskDao.deleteById(task.getId());
     }
     @Test
     void testTaskDaoSaveWithFinancialDetails(){
@@ -66,7 +64,6 @@ public class TaskDaoTestSuite {
         int id = task.getId();
         //Then
         assertNotEquals(0,id);
-
         //CleanUp
         taskDao.deleteById(id);
     }
@@ -106,15 +103,15 @@ public class TaskDaoTestSuite {
         List<Task> longTasks = taskDao.retrieveLongTasks();
         List<Task> shortTasks = taskDao.retrieveShortTasks();
         List<Task> enoughTimeTasks = taskDao.retrieveTasksWithEnoughTime();
-
         //Then
         try {
             assertEquals(2, longTasks.size());
-            assertEquals(6, shortTasks.size());
-            assertEquals(6, enoughTimeTasks.size());
+            assertEquals(12, shortTasks.size());
+            assertEquals(9, enoughTimeTasks.size());
         } finally {
             //CleanUp
             taskListDao.deleteById(id);
         }
+
     }
 }

@@ -2,11 +2,17 @@ create DATABASE kodilla_course;
 
 show databases;
 
+
+show users;
+
+
 create user 'kodilla_user' identified with MYSQL_NATIVE_PASSWORD by 'kodilla_Pass123';
 
 grant ALL PRIVILEGES ON kodilla_course.* to kodilla_user;
 
+
 show TABLES;
+
 
 create table USERS (
     ID SERIAL PRIMARY KEY ,
