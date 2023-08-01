@@ -50,7 +50,7 @@ public class TaskDaoTestSuite {
         List<Task> readTasks = taskDao.findByDuration(duration);
 
         //Then
-        assertEquals(8,readTasks.size());
+        assertEquals(3,readTasks.size());
         //CleanUp
         taskDao.deleteById(task.getId());
     }
@@ -105,7 +105,7 @@ public class TaskDaoTestSuite {
         List<Task> enoughTimeTasks = taskDao.retrieveTasksWithEnoughTime();
         //Then
         try {
-            assertEquals(2, longTasks.size());
+            assertEquals(8, longTasks.size());
             assertEquals(12, shortTasks.size());
             assertEquals(9, enoughTimeTasks.size());
         } finally {

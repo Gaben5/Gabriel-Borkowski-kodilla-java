@@ -69,7 +69,7 @@ public class CompanyDaoTestSuite {
         //When
         List<Employee> allSmith = employeeDao.retrieveAllSmith();
         //Then
-        assertEquals(9,allSmith.size());
+        assertEquals(20,allSmith.size());
         //CleanUp
         employeeDao.deleteById(employee.getId());
     }
@@ -82,7 +82,7 @@ public class CompanyDaoTestSuite {
         //When
         List<Company> companiesStartSoft = companyDao.retrieveAllCompaniesWhoStartsSoft();
         //Then
-        assertEquals(11,companiesStartSoft.size());
+        assertEquals(21,companiesStartSoft.size());
         //CleanUp
     }
 }

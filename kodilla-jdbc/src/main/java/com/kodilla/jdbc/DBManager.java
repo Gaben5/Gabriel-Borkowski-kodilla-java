@@ -10,11 +10,11 @@ public enum DBManager {
     private Connection conn;
     DBManager(){
         Properties connectionProps = new Properties();
-        connectionProps.put("user","kodilla_user");
-        connectionProps.put("password","kodilla_Pass123");
+        connectionProps.put("user","videoo");
+        connectionProps.put("password","kodilla");
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/kodilla_course" +
+                    "jdbc:mysql://localhost:3306/task_crud" +
                             "?serverTimezone=Europe/Warsaw" +
                             "&useSSL=False",                                  // [10]
                     connectionProps);
