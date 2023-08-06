@@ -13,7 +13,6 @@ public class FacebookTestingApp {
     public static final String XPATH_COOKIES = "//div[contains(@class, \"al64\")]/button[contains(@class,\"42ft _4jy0 _al65 _4jy3 _4jy1\" )]";
 
     public static final String XPATH_REGISTER = "//a[contains(@class,\"42ft _4jy0 _6lti _4jy6 _4jy2\" )]";
-    public static final String XPATH_POPUPREGISTER = "div[contains(@id, \"reg_form_box\")]";
     public static final String XPATH_DAYBORN = "//div[contains(@class, \"5k_5\")]/span/span/select[1]";
     public static final String XPATH_MONTHBORN = "//div[contains(@class, \"5k_5\")]/span/span/select[2]";
     public static final String XPATH_YEARBORN = "//div[contains(@class, \"5k_5\")]/span/span/select[3]";
