@@ -8,6 +8,7 @@ import com.sun.xml.bind.v2.TODO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -40,6 +41,7 @@ public class TaskDaoTestSuite {
     }
 
     @Test
+    @Transactional
     void testTaskDaoFindByDuration(){
         //Given
         Task task = new Task(DESCRIPTION,7);
